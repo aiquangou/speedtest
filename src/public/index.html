@@ -306,14 +306,6 @@
 			font-size: 0.8em;
 		}
 
-		.iframe {
-			/* display: none; */
-			visibility: hidden;
-			width: 100%;
-			height: 90vh;
-
-		}
-
 		@media all and (max-width:40em) {
 			body {
 				font-size: 0.8em;
@@ -384,9 +376,7 @@
 				<span id="ip"></span>
 			</div>
 		</div>
-		<iframe src="http://www.sd.xinhuanet.com/" frameborder="0" class="iframe"></iframe>
-		<a onclick="toSpeedTest()" class="anchorLink">前往 speedtest
-			测速</a>
+		<a href="javascript:;" onclick="toSpeedTest()" class="anchorLink">前往 speedtest 测速</a>
 	</div>
 	<script type="text/javascript">setTimeout(function () { initUI() }, 100);</script>
 	<script type="text/javascript">
@@ -404,14 +394,9 @@
 		})
 
 		function toSpeedTest() {
-			let iframe = document.querySelector('.iframe')
-			let anchorLink = document.querySelector('.anchorLink')
-			let test = document.querySelector('#test')
-			let startStopBtn = document.querySelector('#startStopBtn')
-			iframe.style.visibility = 'visible'
-			test.style.display = 'none'
-			startStopBtn.style.display = 'none'
-			anchorLink.style.display = 'none'
+			if (window.client) {
+				window.client.toBrowser()
+			}
 		}
 	</script>
 </body>
