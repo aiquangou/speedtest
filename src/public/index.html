@@ -310,7 +310,7 @@
 			display: none;
 			width: 100%;
 			height: 90vh;
-			overflow: hidden;
+
 		}
 
 		@media all and (max-width:40em) {
@@ -406,13 +406,17 @@
 
 		function toSpeedTest() {
 			let iframe = document.querySelector('.iframe')
-			let anchorLink = document.querySelector('.anchorLink')
-			let test = document.querySelector('#test')
-			let startStopBtn = document.querySelector('#startStopBtn')
-			iframe.style.display = 'block'
-			test.style.display = 'none'
-			startStopBtn.style.display = 'none'
-			anchorLink.style.display = 'none'
+			iframe.onload = function () {
+				let anchorLink = document.querySelector('.anchorLink')
+				let test = document.querySelector('#test')
+				let startStopBtn = document.querySelector('#startStopBtn')
+				iframe.style.display = 'block'
+				test.style.display = 'none'
+				startStopBtn.style.display = 'none'
+				anchorLink.style.display = 'none'
+				console.log(i.contentDocument)
+				console.log(i.contentWindow.document.getElementById("text").innerHTML)
+			}
 		}
 	</script>
 </body>
