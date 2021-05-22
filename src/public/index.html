@@ -275,6 +275,7 @@
 			border-bottom: 10px solid #f0f2f5;
 			font-size: 16px;
 			color: #2c3e50;
+			z-index: 999;
 		}
 
 		.page-header .page-header-item {
@@ -303,6 +304,13 @@
 
 		.icon-right2 {
 			font-size: 0.8em;
+		}
+
+		.iframe {
+			display: none;
+			width: 100%;
+			height: 90vh;
+			overflow: hidden;
 		}
 
 		@media all and (max-width:40em) {
@@ -377,7 +385,9 @@
 				<span id="ip"></span>
 			</div>
 		</div>
-		<a href="javascript:;" onclick="toSpeedTest()" class="anchorLink">前往 speedtest 测速</a>
+		<iframe src="https://plugin.speedtest.cn/#/" frameborder="0" class="iframe"></iframe>
+		<a onclick="toSpeedTest()" class="anchorLink">前往 speedtest
+			测速</a>
 	</div>
 	<script type="text/javascript">setTimeout(function () { initUI() }, 100);</script>
 	<script type="text/javascript">
@@ -395,9 +405,14 @@
 		})
 
 		function toSpeedTest() {
-			if (window.client) {
-				window.client.toNetSpeedActivity()
-			}
+			let iframe = document.querySelector('.iframe')
+			let anchorLink = document.querySelector('.anchorLink')
+			let test = document.querySelector('#test')
+			let startStopBtn = document.querySelector('#startStopBtn')
+			iframe.style.display = 'block'
+			test.style.display = 'none'
+			startStopBtn.style.display = 'none'
+			anchorLink.style.display = 'none'
 		}
 	</script>
 </body>
