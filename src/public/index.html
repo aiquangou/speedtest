@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./fonts/iconfont.css">
 	<script type="text/javascript" src="speedtest.js"></script>
 	<script type="text/javascript">
 		function I(i) { return document.getElementById(i); }
@@ -124,6 +125,8 @@
 			font-family: "Roboto", sans-serif;
 		}
 
+
+
 		h1 {
 			color: #404040;
 			margin: 2vh 0 3vh 0;
@@ -142,6 +145,7 @@
 			height: 3em;
 			line-height: 2.7em;
 			cursor: pointer;
+			margin-top: 2vh;
 			box-shadow: 0 0 0 rgba(0, 0, 0, 0.1), inset 0 0 0 rgba(0, 0, 0, 0.1);
 		}
 
@@ -183,7 +187,7 @@
 			position: relative;
 			box-sizing: border-box;
 			text-align: center;
-			margin-bottom: 3vh;
+			margin-bottom: 5vh;
 		}
 
 		div.testArea div.testName {
@@ -245,8 +249,11 @@
 		}
 
 		div.testGroup {
-			display: block;
-			margin: 0 auto;
+			/* display: block;
+			margin: 0 auto; */
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		.anchorLink {
@@ -257,9 +264,59 @@
 			color: #409eff;
 		}
 
+		.page-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #fff;
+			padding: 0 10px;
+			height: 40px;
+			line-height: 40px;
+			border-bottom: 10px solid #f0f2f5;
+			font-size: 16px;
+			color: #2c3e50;
+		}
+
+		.page-header .page-header-item {
+			flex: 1;
+		}
+
+		.page-header .page-header-item:first-child {
+			text-align: left;
+		}
+
+		.page-header .page-header-item:nth-child(2) {
+			text-align: center;
+		}
+
+		.page-header-item .home {
+			color: #1890ff;
+		}
+
+		.page-header-item strong {
+			font-weight: normal;
+		}
+
+		.icon-home1 {
+			font-size: 1.2em;
+		}
+
+		.icon-right2 {
+			font-size: 0.8em;
+		}
+
 		@media all and (max-width:40em) {
 			body {
 				font-size: 0.8em;
+			}
+		}
+
+		@media all and (min-width:1200px) {
+
+
+			.page-header {
+				height: 50px;
+				line-height: 50px;
 			}
 		}
 	</style>
@@ -267,8 +324,27 @@
 </head>
 
 <body>
-	<h1>LearnOnly 网络测速</h1>
 	<div id="testWrapper">
+		<!-- 固定头部 -->
+		<div class="page-header">
+			<span class="page-header-item">
+				<span class="back">
+					<i class="iconfont icon-fanhui3"></i>
+					返回
+				</span>
+			</span>
+			<span class="page-header-item">
+				<span class="home">
+					<i class="iconfont icon-home1"></i>
+					<strong>主页</strong>
+				</span>
+				<i class="iconfont icon-right2"></i>
+				<span style="font-weight: 700;">网络测速</span>
+			</span>
+			<span class="page-header-item">
+				<span></span>
+			</span>
+		</div>
 		<div id="startStopBtn" onclick="startStop()"></div>
 		<div id="test">
 			<div class="testGroup">
@@ -304,6 +380,18 @@
 		<a href="https://plugin.speedtest.cn/#/" class="anchorLink">前往 speedtest 测速</a>
 	</div>
 	<script type="text/javascript">setTimeout(function () { initUI() }, 100);</script>
+	<script type="text/javascript">
+		let goBack = document.querySelector('.back')
+		goBack.addEventListener('click', function () {
+			window.history.go(-1);
+		})
+		let goHome = document.querySelector('.home')
+		goHome.addEventListener('click', function () {
+			if (window.client) {
+				window.client.webViewfinish()
+			}
+		})
+	</script>
 </body>
 
 </html>
