@@ -12,9 +12,9 @@
 		//INITIALIZE SPEEDTEST
 		var s = new Speedtest(); //create speedtest object
 
-		var meterBk = /Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent) ? "#EAEAEA" : "#80808040";
-		var dlColor = "#6060AA",
-			ulColor = "#616161";
+		var meterBk = /Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent) ? "#ebeef5" : "#ebeef5";
+		var dlColor = "#6f7ad3", //下载进度条的颜色
+			ulColor = "#5cb87a"; //上传进度条的颜色
 		var progColor = meterBk;
 
 		//CODE FOR GAUGES
@@ -81,7 +81,7 @@
 			if (!forced && s.getState() != 3) return;
 			if (uiData == null) return;
 			var status = uiData.testState;
-			I("ip").textContent = '您的IP地址为' + uiData.clientIp;
+			I("ip").textContent = '您的IP地址为: ' + uiData.clientIp;
 			I("dlText").textContent = (status == 1 && uiData.dlStatus == 0) ? "..." : format(uiData.dlStatus);
 			drawMeter(I("dlMeter"), mbpsToAmount(Number(uiData.dlStatus * (status == 1 ? oscillate() : 1))), meterBk, dlColor, Number(uiData.dlProgress), progColor);
 			I("ulText").textContent = (status == 3 && uiData.ulStatus == 0) ? "..." : format(uiData.ulStatus);
@@ -267,7 +267,8 @@
 			bottom: 2vh;
 			left: 50%;
 			transform: translateX(-50%);
-			color: #409eff;
+			color: #1989fa;
+			text-decoration: none;
 		}
 
 		.page-header {
@@ -389,13 +390,13 @@
 		let goBack = document.querySelector('.back')
 		goBack.addEventListener('click', function () {
 			if (window.client) {
-				window.client.webViewfinish()
+				window.location.back()
 			}
 		})
 		let goHome = document.querySelector('.home')
 		goHome.addEventListener('click', function () {
 			if (window.client) {
-				window.client.toHomeActivity()
+				window.client.toHomeworkActivity()
 			}
 		})
 
