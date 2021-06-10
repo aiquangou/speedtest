@@ -81,7 +81,7 @@
 			if (!forced && s.getState() != 3) return;
 			if (uiData == null) return;
 			var status = uiData.testState;
-			I("ip").textContent = uiData.clientIp;
+			I("ip").textContent = '您的IP地址为' + uiData.clientIp;
 			I("dlText").textContent = (status == 1 && uiData.dlStatus == 0) ? "..." : format(uiData.dlStatus);
 			drawMeter(I("dlMeter"), mbpsToAmount(Number(uiData.dlStatus * (status == 1 ? oscillate() : 1))), meterBk, dlColor, Number(uiData.dlProgress), progColor);
 			I("ulText").textContent = (status == 3 && uiData.ulStatus == 0) ? "..." : format(uiData.ulStatus);
@@ -118,6 +118,12 @@
 			margin: 0;
 			background: #FFFFFF;
 			color: #202020;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 
 		body {
@@ -382,9 +388,7 @@
 	<script type="text/javascript">
 		let goBack = document.querySelector('.back')
 		goBack.addEventListener('click', function () {
-			if (window.client) {
-				window.client.webViewfinish()
-			}
+			window.history.go(-1)
 		})
 		let goHome = document.querySelector('.home')
 		goHome.addEventListener('click', function () {
