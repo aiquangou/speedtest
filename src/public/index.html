@@ -388,7 +388,9 @@
 	<script type="text/javascript">
 		let goBack = document.querySelector('.back')
 		goBack.addEventListener('click', function () {
-			window.history.go(-1)
+			if (window.client) {
+				window.client.webViewfinish()
+			}
 		})
 		let goHome = document.querySelector('.home')
 		goHome.addEventListener('click', function () {
