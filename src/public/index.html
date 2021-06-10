@@ -67,31 +67,31 @@
 				//test is not running, begin
 				I("startStopBtn").className = "running";
 				s.onupdate = function (data) {
-					if (data) {
-						if (parseInt(data.dlProgress * 100) <= 20) {
-							dlColor = '#f56c6c'
-						} else if (parseInt(data.dlProgress * 100) <= 40) {
-							dlColor = '#e6a23c'
-						} else if (parseInt(data.dlProgress * 100) <= 60) {
-							dlColor = '#5cb87a'
-						} else if (parseInt(data.dlProgress * 100) <= 80) {
-							dlColor = '#1989fa'
-						} else if (parseInt(data.dlProgress * 100) <= 100) {
-							dlColor = '#6f7ad3'
-						}
-						if (parseInt(data.ulProgress * 100) <= 20) {
-							ulColor = '#f56c6c'
-						} else if (parseInt(data.ulProgress * 100) <= 40) {
-							ulColor = '#e6a23c'
-						} else if (parseInt(data.ulProgress * 100) <= 60) {
-							ulColor = '#5cb87a'
-						} else if (parseInt(data.ulProgress * 100) <= 80) {
-							ulColor = '#1989fa'
-						} else if (parseInt(data.ulProgress * 100) <= 100) {
-							ulColor = '#6f7ad3'
-						}
-						uiData = data;
-					}
+
+					// if (parseInt(data.dlStatus) <= 10) {
+					// 	dlColor = '#f56c6c'
+					// } else if (10 < parseInt(data.dlStatus) <= 20) {
+					// 	dlColor = '#e6a23c'
+					// } else if (20 < parseInt(data.dlStatus) <= 40) {
+					// 	dlColor = '#5cb87a'
+					// } else if (40 < parseInt(data.dlStatus) <= 60) {
+					// 	dlColor = '#1989fa'
+					// } else if (parseInt(data.dlStatus) > 60) {
+					// 	dlColor = '#6f7ad3'
+					// }
+					// if (parseInt(data.ulStatus) <= 10) {
+					// 	ulColor = '#f56c6c'
+					// } else if (10 < parseInt(data.ulStatus) <= 20) {
+					// 	ulColor = '#e6a23c'
+					// } else if (20 < parseInt(data.ulStatus) <= 40) {
+					// 	ulColor = '#5cb87a'
+					// } else if (40 < parseInt(data.ulStatus) <= 60) {
+					// 	ulColor = '#1989fa'
+					// } else if (parseInt(data.dlStatus) > 60) {
+					// 	ulColor = '#6f7ad3'
+					// }
+
+					uiData = data;
 				};
 				s.onend = function (aborted) {
 					I("startStopBtn").className = "";
