@@ -67,7 +67,31 @@
 				//test is not running, begin
 				I("startStopBtn").className = "running";
 				s.onupdate = function (data) {
-					uiData = data;
+					if (data) {
+						if (parseInt(data.dlProgress * 100) <= 20) {
+							dlColor = '#f56c6c'
+						} else if (parseInt(data.dlProgress * 100) <= 40) {
+							dlColor = '#e6a23c'
+						} else if (parseInt(data.dlProgress * 100) <= 60) {
+							dlColor = '#5cb87a'
+						} else if (parseInt(data.dlProgress * 100) <= 80) {
+							dlColor = '#1989fa'
+						} else if (parseInt(data.dlProgress * 100) <= 100) {
+							dlColor = '#6f7ad3'
+						}
+						if (parseInt(data.ulProgress * 100) <= 20) {
+							ulColor = '#f56c6c'
+						} else if (parseInt(data.ulProgress * 100) <= 40) {
+							ulColor = '#e6a23c'
+						} else if (parseInt(data.ulProgress * 100) <= 60) {
+							ulColor = '#5cb87a'
+						} else if (parseInt(data.ulProgress * 100) <= 80) {
+							ulColor = '#1989fa'
+						} else if (parseInt(data.ulProgress * 100) <= 100) {
+							ulColor = '#6f7ad3'
+						}
+						uiData = data;
+					}
 				};
 				s.onend = function (aborted) {
 					I("startStopBtn").className = "";
@@ -390,7 +414,7 @@
 		let goBack = document.querySelector('.back')
 		goBack.addEventListener('click', function () {
 			if (window.client) {
-				window.location.back()
+				window.client.toHomeworkActivity()
 			}
 		})
 		let goHome = document.querySelector('.home')
